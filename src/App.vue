@@ -1,7 +1,9 @@
 <template>
   <div id="app">
+
+
     <div id="nav">
-          <h2 class="navbarh2">Pokemon</h2>
+               <img src="https://assets.pokemon.com/assets/cms2/img/misc/gus/buttons/logo-pokemon-79x45.png" />
             <!-- <router-link :to="{name:'AnotherView', query:{hello:this.hello}}" >AnotherView</router-link> -->
             <div v-for="(poke, index) in pokemon" :key='index'>
                   <router-link :to="{ name: 'PokeCard', params: {id:index +1}}">{{poke.name}}</router-link>

@@ -8,14 +8,18 @@
       {{ error }}
     </div>
       <div v-if="singlePokemon" class="pokeCard">
-        <h2>{{singlePokemon.name}}</h2>
+
         <img class="pokeImg" :src="singlePokemon.sprites.front_default" alt="Image"  />
+        <h2>{{singlePokemon.name}}</h2>
         <div class="cardbody">
           <!-- Types Div  -->
           <div>
             <div>
               <h4>Type:</h4>
-              <h5 v-for="(type, index) in singlePokemon.types" :key="index"> <span>{{type.type.name}} </span></h5>
+              <div class="typeholder">
+                  <h5 v-for="(type, index) in singlePokemon.types" :key="index"> <span>| {{type.type.name}} | </span></h5>
+              </div>
+
             </div>
             <h4>Locations Found In:</h4>
             <div v-if="encounters.length > 0" class="encountersBox">
@@ -108,15 +112,26 @@ methods:{
   height:200px;
   border:4px solid red;
   border-radius: 20px;
+  margin-top:20px;
 }
 
 .encountersBox{
   overflow: scroll;
-  height:120px;
+  height:100px;
+  overflow-x: hidden;
 }
 
 h4 {
   text-decoration: underline;
   font-weight: 800;
+}
+
+.typeholder {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+span {
+
 }
 </style>

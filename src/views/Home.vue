@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>Welcome to the VueDex</h1>
+    <img src="https://assets.pokemon.com/assets/cms2/img/misc/gus/buttons/logo-pokemon-79x45.png" />
     <img alt="PokeBall" class="pokeballHomePic" src="https://poketouch.files.wordpress.com/2020/11/die_cast_poke_ball_replica.jpg">
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   </div>
