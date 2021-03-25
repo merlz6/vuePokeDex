@@ -27,7 +27,7 @@ export default {
   },
   mounted(){
     axios
-    .get('https://pokeapi.co/api/v2/pokemon?limit=1118')
+    .get('https://pokeapi.co/api/v2/pokemon?limit=898')
     .then(response => (this.pokemon = response.data.results))
   }
 }
