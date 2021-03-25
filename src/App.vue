@@ -3,10 +3,10 @@
 
 
     <div id="nav">
-               <img src="https://assets.pokemon.com/assets/cms2/img/misc/gus/buttons/logo-pokemon-79x45.png" />
+            <img src="https://assets.pokemon.com/assets/cms2/img/misc/gus/buttons/logo-pokemon-79x45.png" />
             <!-- <router-link :to="{name:'AnotherView', query:{hello:this.hello}}" >AnotherView</router-link> -->
             <div v-for="(poke, index) in pokemon" :key='index'>
-                  <router-link :to="{ name: 'PokeCard', params: {id:index +1}}">{{poke.name}}</router-link>
+                  <router-link :to="{ name: 'PokeCard', params: {id:index +1}}">{{poke.name.charAt(0).toUpperCase() + poke.name.slice(1) }}</router-link>
             </div>
 
     </div>

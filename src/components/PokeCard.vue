@@ -10,7 +10,7 @@
       <div v-if="singlePokemon" class="pokeCard">
 
         <img class="pokeImg" :src="singlePokemon.sprites.front_default" alt="Image"  />
-        <h2>{{singlePokemon.name}}</h2>
+        <h2>{{singlePokemon.name.charAt(0).toUpperCase() + singlePokemon.name.slice(1)}}</h2>
         <div class="cardbody">
           <!-- Types Div  -->
           <div>
