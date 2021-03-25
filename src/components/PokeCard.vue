@@ -9,12 +9,20 @@
     </div>
       <div v-if="singlePokemon" class="pokeCard">
         <h2>{{singlePokemon.name}}</h2>
-        <img :src="singlePokemon.sprites.front_default" alt="Image"  />
+        <img class="pokeImg" :src="singlePokemon.sprites.front_default" alt="Image"  />
         <div class="cardbody">
           <!-- Types Div  -->
           <div>
-            <h4>Type:</h4>
-            <h5 v-for="(type, index) in singlePokemon.types" :key="index"> <span>{{type.type.name}} </span></h5>
+            <div>
+              <h4>Type:</h4>
+              <h5 v-for="(type, index) in singlePokemon.types" :key="index"> <span>{{type.type.name}} </span></h5>
+            </div>
+            <h4>Locations Found In:</h4>
+            <div v-if="encounters.length > 0" class="encountersBox">
+
+              <h5  v-for="(el, index) in encounters" :key="index"> <span>{{el.location_area.name}} </span></h5>
+            </div>
+
           </div>
           <!-- Stats Div -->
           <div>
@@ -88,5 +96,27 @@ methods:{
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.cardbody {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 
+}
+
+.pokeImg {
+  width:200px;
+  height:200px;
+  border:4px solid red;
+  border-radius: 20px;
+}
+
+.encountersBox{
+  overflow: scroll;
+  height:120px;
+}
+
+h4 {
+  text-decoration: underline;
+  font-weight: 800;
+}
 </style>
