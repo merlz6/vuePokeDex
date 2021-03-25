@@ -7,11 +7,15 @@
     <div v-if="error" class="error">
       {{ error }}
     </div>
+      <div v-if="singlePokemon" class="pokeCard">
+        <h2>{{singlePokemon.name}}</h2>
+        <img :src="singlePokemon.sprites.front_default" alt="Image"  />
+        <div class="cardbody">
+          <h3 v-for="type in singlePokemon.types" :key="type">Type: <span>{{type.type.name}} </span></h3>
+        </div>
+      </div>
 
-    <div v-if="singlePokemon" class="content">
-      <h2>{{singlePokemon.name}}</h2>
-      <img :src="singlePokemon.sprites.front_default" alt="Image"  />
-    </div>
+
   </div>
 
 </template>

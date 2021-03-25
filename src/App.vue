@@ -1,8 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-          <router-link to="/about">About</router-link> |
+          <h2>Pokemon</h2>
             <!-- <router-link :to="{name:'AnotherView', query:{hello:this.hello}}" >AnotherView</router-link> -->
             <div v-for="(poke, index) in pokemon" :key='index'>
                   <router-link :to="{ name: 'PokeCard', params: {name:poke.name}}">{{poke.name}}</router-link>
@@ -28,7 +27,7 @@ export default {
   },
   mounted(){
     axios
-    .get('https://pokeapi.co/api/v2/pokemon')
+    .get('https://pokeapi.co/api/v2/pokemon?limit=1118')
     .then(response => (this.pokemon = response.data.results))
   }
 }
@@ -41,17 +40,35 @@ export default {
   text-align: center;
   color: #2c3e50;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  /* flex-direction: row;
+  justify-content: space-around; */
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr;
+  border: 5px solid white;
+  border-radius: 10px;
+  height:600px;
+}
+body {
+  background-color: red;
+}
+#nav {
+  padding: 20px;
+  width:25%;
+  border: 2.5px solid black;
+  max-height:580px;
+    overflow: scroll;
 }
 
-#nav {
-  padding: 30px;
+.post {
+  width:70%;
+  background-color: ghostWhite;
+  border: 2.5px solid black;
+  max-height:600px;
 }
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: ghostWhite;
 }
 
 #nav a.router-link-exact-active {
