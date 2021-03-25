@@ -11,7 +11,16 @@
         <h2>{{singlePokemon.name}}</h2>
         <img :src="singlePokemon.sprites.front_default" alt="Image"  />
         <div class="cardbody">
-          <h3 v-for="type in singlePokemon.types" :key="type">Type: <span>{{type.type.name}} </span></h3>
+          <!-- Types Div  -->
+          <div>
+            <h4>Type:</h4>
+            <h5 v-for="(type, index) in singlePokemon.types" :key="index"> <span>{{type.type.name}} </span></h5>
+          </div>
+          <!-- Stats Div -->
+          <div>
+            <h4>Stats:</h4>
+            <h5 v-for="(stat, index) in singlePokemon.stats" :key="index"> {{stat.stat.name}} :<span> {{stat.base_stat}} </span></h5>
+          </div>
         </div>
       </div>
 
@@ -32,7 +41,8 @@ export default {
     return{
     singlePokemon:'',
     loading:false,
-    error:null
+    error:null,
+    encounters:''
   }},
   created () {
   // fetch the data when the view is created and the data is
@@ -47,25 +57,26 @@ methods:{
   fetchData () {
         this.error = this.post = null
         this.loading = true
-        const fetchedId = this.$route.params.name
-        // replace `getPost` with your data fetching util / API wrapper
-        // axios.get(`https://pokeapi.co/api/v2/pokemon/` + fetchedId, (err, post) => {
-        //   // make sure this request is the last one we did, discard otherwise
-        //   if (this.$route.params.name !== fetchedId) return
-        //   this.loading = false
-        //   if (err) {
-        //     this.error = err.toString()
-        //   } else {
-        //     this.singlePokemon = post
-        //   }
-        // })
+        const fetchedId = this.$route.params.id
+
         axios.get(`https://pokeapi.co/api/v2/pokemon/${fetchedId}`)
           .then(response => {
             this.singlePokemon = response.data
             this.loading = false
             console.log(this.singlePokemon)
           })
+          .then(response => {
+            console.log(response)
+            return axios.get(`https://pokeapi.co/api/v2/pokemon/${fetchedId}/encounters`)
+          .then(response =>{
+            this.encounters = response.data
+            console.log('this is encounters:', this.encounters)
+          } )
+          })
           .catch(error => this.error = error)
+
+
+
       }
 }
   //  mounted(){

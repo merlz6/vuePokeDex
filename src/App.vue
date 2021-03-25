@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <div id="nav">
-          <h2>Pokemon</h2>
+          <h2 class="navbarh2">Pokemon</h2>
             <!-- <router-link :to="{name:'AnotherView', query:{hello:this.hello}}" >AnotherView</router-link> -->
             <div v-for="(poke, index) in pokemon" :key='index'>
-                  <router-link :to="{ name: 'PokeCard', params: {name:poke.name}}">{{poke.name}}</router-link>
+                  <router-link :to="{ name: 'PokeCard', params: {id:index +1}}">{{poke.name}}</router-link>
             </div>
 
     </div>
@@ -73,5 +73,9 @@ body {
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.navbarh2 {
+  text-decoration: underline;
 }
 </style>

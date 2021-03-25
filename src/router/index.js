@@ -20,7 +20,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path:'/pokemon/:name',
+    path:'/pokemon/:id',
     name:'PokeCard',
     component:PokeCard
   }
