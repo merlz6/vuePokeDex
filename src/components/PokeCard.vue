@@ -10,7 +10,7 @@
 
     <div v-if="singlePokemon" class="content">
       <h2>{{singlePokemon.name}}</h2>
-
+      <img :src="singlePokemon.sprites.front_default" alt="Image"  />
     </div>
   </div>
 
