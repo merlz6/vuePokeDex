@@ -48,7 +48,7 @@ export default {
   grid-template-rows: 1fr;
   border: 5px solid white;
   border-radius: 10px;
-  height:610px;
+  height:625px;
 }
 body {
   background-color: red;

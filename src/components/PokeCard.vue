@@ -10,6 +10,15 @@
       <div v-if="singlePokemon" class="pokeCard">
         <img @click="flipCard" v-if="front === false" class="pokeImg" :src="singlePokemon.sprites.front_default" alt="Image"  />
         <img @click="flipCard" v-if="front === true" class="pokeImg" :src="singlePokemon.sprites.back_default" alt="Image"  />
+        <div >
+          <input  type="radio" id="dewey" name="drone" :checked="front === false">
+          <input type="radio" id="dewey" name="drone" :checked="front === true" >
+        </div>
+        <!-- <div v-if="front === false">
+          <input type="radio" id="dewey" name="drone" >
+          <input type="radio" id="dewey" name="drone" checked>
+
+        </div> -->
         <h2>{{singlePokemon.name.charAt(0).toUpperCase() + singlePokemon.name.slice(1)}}</h2>
         <div class="cardbody">
           <!-- Types Div  -->
