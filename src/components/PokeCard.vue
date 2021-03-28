@@ -8,8 +8,8 @@
       {{ error }}
     </div>
       <div v-if="singlePokemon" class="pokeCard">
-
-        <img class="pokeImg" :src="singlePokemon.sprites.front_default" alt="Image"  />
+        <img @click="flipCard" v-if="front === false" class="pokeImg" :src="singlePokemon.sprites.front_default" alt="Image"  />
+        <img @click="flipCard" v-if="front === true" class="pokeImg" :src="singlePokemon.sprites.back_default" alt="Image"  />
         <h2>{{singlePokemon.name.charAt(0).toUpperCase() + singlePokemon.name.slice(1)}}</h2>
         <div class="cardbody">
           <!-- Types Div  -->
@@ -54,7 +54,11 @@ export default {
     singlePokemon:'',
     loading:false,
     error:null,
-    encounters:''
+    encounters:'',
+    front:true,
+    image:'',
+    imageFront:'',
+    imageBack:''
   }},
   created () {
   // fetch the data when the view is created and the data is
@@ -65,6 +69,9 @@ export default {
   // call again the method if the route changes
   '$route': 'fetchData'
 },
+mounted(){
+  this.flipCard()
+},
 methods:{
   fetchData () {
         this.error = this.post = null
@@ -74,6 +81,8 @@ methods:{
         axios.get(`https://pokeapi.co/api/v2/pokemon/${fetchedId}`)
           .then(response => {
             this.singlePokemon = response.data
+            // this.imageFront = response.data.sprites.front_default
+            // this.imageBack = response.data.sprites.back
             this.loading = false
             console.log(this.singlePokemon)
           })
@@ -89,6 +98,10 @@ methods:{
 
 
 
+      },
+      flipCard(){
+        this.front = !this.front
+        console.log(this.front)
       }
 }
   //  mounted(){

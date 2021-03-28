@@ -48,7 +48,7 @@ export default {
   grid-template-rows: 1fr;
   border: 5px solid white;
   border-radius: 10px;
-  height:600px;
+  height:610px;
 }
 body {
   background-color: red;
@@ -65,7 +65,7 @@ body {
   width:70%;
   background-color: ghostWhite;
   border: 2.5px solid black;
-  max-height:600px;
+  max-height:650px;
 }
 
 #nav a {
